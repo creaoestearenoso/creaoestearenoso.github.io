@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const novedades = (await getCollection('novedades'))
+  .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf());
+
+const formato = new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base titulo="Novedades">
+  <h1>Novedades</h1>
+  <p class="bajada">Lo que va pasando en la zona: jornadas, encuentros y decisiones.</p>
+
+  {novedades.length === 0 ? (
+    <div class="aviso"><p>Todavía no hay publicaciones.</p></div>
+  ) : (
+    <ul class="listado">
+      {novedades.map((n) => (
+        <li>
+          <p class="fecha">{formato.format(n.data.fecha)}</p>
+          <h2><a href={`/novedades/${n.id}`}>{n.data.titulo}</a></h2>
+          <p>{n.data.resumen}</p>
+        </li>
+      ))}
+    </ul>
+  )}
+</Base>

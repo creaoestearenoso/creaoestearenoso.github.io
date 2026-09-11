@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  titulo: string;
+  descripcion?: string;
+}
+
+const { titulo, descripcion = 'Zona Oeste Arenoso de CREA — grupos, autoridades y novedades.' } = Astro.props;
+const actual = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const secciones = [
+  { href: '/', texto: 'Inicio' },
+  { href: '/la-zona', texto: 'La zona' },
+  { href: '/novedades', texto: 'Novedades' },
+  { href: '/contacto', texto: 'Contacto' },
+];
+---
+
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={descripcion} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{titulo} · Zona Oeste Arenoso</title>
+  </head>
+  <body>
+    <header class="encabezado">
+      <div class="contenedor">
+        <a class="marca" href="/">Oeste Arenoso<span>Zona CREA</span></a>
+        <nav class="navegacion">
+          {secciones.map((s) => (
+            <a href={s.href} aria-current={actual === s.href.replace(/\/$/, '') || (s.href === '/' && actual === '/') ? 'page' : undefined}>{s.texto}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="contenedor">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="pie">
+      <div class="contenedor">
+        <p>Zona Oeste Arenoso — Consorcios Regionales de Experimentación Agrícola.</p>
+        <p>Sitio de la zona. Consultas por <a href="/contacto">correo</a>.</p>
+      </div>
+    </footer>
+  </body>
+</html>
