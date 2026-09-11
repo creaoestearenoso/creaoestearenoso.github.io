@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 const novedades = (await getCollection('novedades'))
   .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf());
 
-const formato = new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
+const formato = new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 ---
 
 <Base titulo="Novedades">
