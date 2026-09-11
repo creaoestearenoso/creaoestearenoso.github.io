@@ -6,7 +6,7 @@ interface Props {
   descripcion?: string;
 }
 
-const { titulo, descripcion = 'Zona Oeste Arenoso de CREA — grupos, autoridades y novedades.' } = Astro.props;
+const { titulo, descripcion = 'Zona Oeste Arenoso de CREA — los grupos del oeste bonaerense.' } = Astro.props;
 const actual = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const secciones = [
@@ -21,21 +21,33 @@ const secciones = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={descripcion} />
+    <meta name="theme-color" content="#008751" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <title>{titulo} · Zona Oeste Arenoso</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
+    />
+    <title>{titulo} · Zona CREA Oeste Arenoso</title>
   </head>
   <body>
     <header class="encabezado">
       <div class="contenedor">
-        <a class="marca" href="/">Oeste Arenoso<span>Zona CREA</span></a>
+        <a class="marca" href="/"><b>CREA</b><span>OESTE ARENOSO</span></a>
         <nav class="navegacion">
           {secciones.map((s) => (
-            <a href={s.href} aria-current={actual === s.href.replace(/\/$/, '') || (s.href === '/' && actual === '/') ? 'page' : undefined}>{s.texto}</a>
+            <a
+              href={s.href}
+              aria-current={actual === s.href.replace(/\/$/, '') || (s.href === '/' && actual === '/') ? 'page' : undefined}
+            >{s.texto}</a>
           ))}
         </nav>
       </div>
     </header>
+
+    <slot name="portada" />
 
     <main>
       <div class="contenedor">
@@ -46,7 +58,7 @@ const secciones = [
     <footer class="pie">
       <div class="contenedor">
         <p>Zona Oeste Arenoso — Consorcios Regionales de Experimentación Agrícola.</p>
-        <p>Sitio de la zona. Consultas por <a href="/contacto">correo</a>.</p>
+        <p>Oeste de la provincia de Buenos Aires.</p>
       </div>
     </footer>
   </body>

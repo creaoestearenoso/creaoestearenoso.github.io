@@ -1,41 +1,40 @@
-:root {
-  --tinta: #1f2421;
-  --tinta-suave: #55605a;
-  --papel: #fbfaf7;
-  --papel-hueco: #f1efe9;
-  --verde: #2f6b4f;
-  --verde-claro: #dcebe1;
-  --borde: #dcd8cf;
-  --ancho: 68rem;
-  --texto: 42rem;
-}
+/* Identidad CREA: verde institucional #008751, verde del logo #17AA67,
+   amarillo del logo #FFDC16, tipografía Roboto Condensed. */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --tinta: #ebe9e3;
-    --tinta-suave: #a5aca7;
-    --papel: #161a18;
-    --papel-hueco: #1e2321;
-    --verde: #7db894;
-    --verde-claro: #23352b;
-    --borde: #2f3733;
-  }
+:root {
+  --verde: #008751;
+  --verde-vivo: #17AA67;
+  --verde-hondo: #005936;
+  --amarillo: #FFDC16;
+  --tinta: #313131;
+  --tinta-suave: #6b6b6b;
+  --agua: #e6f7ef;
+  --borde: #dfe5e1;
+  --blanco: #ffffff;
+
+  --ancho: 64rem;
+  --texto: 40rem;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background: var(--papel);
+  background: var(--blanco);
   color: var(--tinta);
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-family: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
   font-size: 1.0625rem;
-  line-height: 1.65;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--verde); text-underline-offset: 0.2em; }
-a:hover { color: var(--tinta); }
+a { color: var(--verde); }
+a:hover { color: var(--verde-vivo); }
+
+:focus-visible {
+  outline: 3px solid var(--verde-vivo);
+  outline-offset: 2px;
+}
 
 .contenedor {
   max-width: var(--ancho);
@@ -43,103 +42,166 @@ a:hover { color: var(--tinta); }
   padding: 0 1.5rem;
 }
 
-/* Encabezado */
-.encabezado {
-  border-bottom: 1px solid var(--borde);
-  background: var(--papel);
+/* — Marca: el bloque verde con letras amarillas del logo CREA — */
+.marca {
+  display: inline-flex;
+  flex-direction: column;
+  text-decoration: none;
+  line-height: 1;
 }
+.marca b {
+  background: var(--verde);
+  color: var(--amarillo);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  padding: 0.3em 0.45em 0.25em;
+}
+.marca span {
+  color: var(--tinta);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  padding-top: 0.5rem;
+}
+
+/* — Encabezado — */
+.encabezado { border-bottom: 1px solid var(--borde); }
 .encabezado .contenedor {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.5rem 2rem;
-  padding-block: 1.25rem;
-}
-.marca {
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  color: var(--tinta);
-  line-height: 1.25;
-}
-.marca span {
-  display: block;
-  font-weight: 400;
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--tinta-suave);
+  align-items: center;
+  gap: 1rem 2rem;
+  padding-block: 1.1rem;
 }
 .navegacion {
   margin-left: auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.9rem;
+  gap: 1.75rem;
+  font-size: 1.05rem;
 }
-.navegacion a { text-decoration: none; color: var(--tinta-suave); }
-.navegacion a:hover, .navegacion a[aria-current="page"] { color: var(--verde); }
+.navegacion a {
+  text-decoration: none;
+  color: var(--tinta);
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
+}
+.navegacion a:hover { color: var(--verde); }
+.navegacion a[aria-current='page'] {
+  color: var(--verde);
+  border-bottom-color: var(--amarillo);
+}
 
-/* Cuerpo */
+/* — Portada: banda verde a sangre — */
+.portada {
+  background: var(--verde);
+  color: var(--blanco);
+  padding-block: clamp(3rem, 8vw, 5.25rem);
+}
+.portada h1 {
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 0;
+  max-width: 14ch;
+}
+.portada .bajada {
+  color: var(--blanco);
+  font-weight: 300;
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  max-width: 44ch;
+  margin-top: 1.5rem;
+  border-top: 4px solid var(--amarillo);
+  padding-top: 1.5rem;
+}
+
+/* — Cuerpo — */
 main { padding-block: 3.5rem 4.5rem; }
-h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; }
-h1 { font-size: clamp(2rem, 5vw, 2.75rem); margin: 0 0 1rem; }
-h2 { font-size: 1.45rem; margin: 2.75rem 0 0.75rem; }
-main p, main ul, main ol { max-width: var(--texto); }
+.portada + main { padding-top: 2.75rem; }
 
+h1, h2, h3 { line-height: 1.15; }
+main h1 {
+  font-size: clamp(2.1rem, 6vw, 3.2rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 1.25rem;
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 3rem 0 0.6rem;
+  padding-left: 0.85rem;
+  border-left: 5px solid var(--amarillo);
+}
+main p, main ul, main ol, main dl { max-width: var(--texto); }
 .bajada {
   font-size: 1.2rem;
+  font-weight: 300;
   color: var(--tinta-suave);
   max-width: var(--texto);
 }
 
-.tarjetas {
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  margin-top: 2.5rem;
-  padding: 0;
+/* — Accesos de la portada — */
+.accesos {
   list-style: none;
-}
-.tarjeta {
+  padding: 0;
+  margin: 0;
+  max-width: var(--ancho);
+  display: grid;
+  gap: 1px;
+  background: var(--borde);
   border: 1px solid var(--borde);
-  background: var(--papel-hueco);
-  border-radius: 3px;
-  padding: 1.25rem 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
 }
-.tarjeta h3 { margin: 0 0 0.35rem; font-size: 1.1rem; }
-.tarjeta p { margin: 0; color: var(--tinta-suave); font-size: 0.98rem; }
-
-.listado { list-style: none; padding: 0; margin: 2rem 0 0; }
-.listado li { padding: 1.1rem 0; border-top: 1px solid var(--borde); }
-.listado li:last-child { border-bottom: 1px solid var(--borde); }
-.listado h2 { margin: 0 0 0.25rem; font-size: 1.2rem; }
-.listado a { text-decoration: none; }
-.fecha {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+.accesos li { background: var(--blanco); }
+.accesos a {
+  display: block;
+  height: 100%;
+  padding: 1.6rem 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  border-left: 5px solid transparent;
+}
+.accesos a:hover { background: var(--agua); border-left-color: var(--verde); }
+.accesos h2 {
+  margin: 0 0 0.3rem;
+  padding: 0;
+  border: 0;
+  font-size: 1.3rem;
+  color: var(--verde);
   text-transform: uppercase;
-  color: var(--tinta-suave);
 }
+.accesos p { margin: 0; color: var(--tinta-suave); }
 
+/* — Avisos y datos — */
 .aviso {
-  border-left: 3px solid var(--verde);
-  background: var(--verde-claro);
-  padding: 0.9rem 1.2rem;
-  border-radius: 0 3px 3px 0;
+  background: var(--agua);
+  border-left: 5px solid var(--verde);
+  padding: 1rem 1.25rem;
   max-width: var(--texto);
 }
 .aviso p { margin: 0; }
 
-/* Pie */
-.pie {
-  border-top: 1px solid var(--borde);
-  padding-block: 2rem 3rem;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.85rem;
-  color: var(--tinta-suave);
+.dato { margin: 1.25rem 0; max-width: var(--texto); }
+.dato dt {
+  font-weight: 700;
+  color: var(--verde);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
-.pie p { margin: 0.25rem 0; }
+.dato dd { margin: 0.15rem 0 0; }
+
+/* — Pie — */
+.pie {
+  background: var(--verde-hondo);
+  color: var(--blanco);
+  padding-block: 2.5rem 3rem;
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+.pie a { color: var(--amarillo); }
+.pie a:hover { color: var(--blanco); }
+.pie p { margin: 0.35rem 0; max-width: 52ch; }

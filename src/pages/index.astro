@@ -3,20 +3,28 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base titulo="Inicio">
-  <h1>Zona Oeste Arenoso</h1>
-  <p class="bajada">
-    Los grupos CREA del oeste de la provincia de Buenos Aires, trabajando juntos sobre
-    suelos arenosos: agricultura, ganadería, lechería y gestión empresaria.
-  </p>
+  <section class="portada" slot="portada">
+    <div class="contenedor">
+      <h1>Trabajar la arena, juntos</h1>
+      <p class="bajada">
+        Los grupos CREA del oeste bonaerense comparten una condición de suelo y una manera
+        de trabajar: medir, comparar y contarse los resultados.
+      </p>
+    </div>
+  </section>
 
-  <ul class="tarjetas">
-    <li class="tarjeta">
-      <h3><a href="/la-zona">Los grupos</a></h3>
-      <p>Quiénes integran la zona, dónde están y con qué actividad trabajan.</p>
+  <ul class="accesos">
+    <li>
+      <a href="/la-zona">
+        <h2>La zona</h2>
+        <p>Los grupos que la integran, las autoridades y la coordinación.</p>
+      </a>
     </li>
-    <li class="tarjeta">
-      <h3><a href="/contacto">Contacto</a></h3>
-      <p>Por dónde llega una consulta o una propuesta de trabajo con la zona.</p>
+    <li>
+      <a href="/contacto">
+        <h2>Contacto</h2>
+        <p>Por dónde llega una consulta o una propuesta de trabajo.</p>
+      </a>
     </li>
   </ul>
 </Base>
