@@ -1,6 +1,6 @@
 # Sitio de la zona CREA Oeste Arenoso
 
-Sitio institucional de la zona Oeste Arenoso: grupos, autoridades, coordinación y novedades.
+Sitio institucional de la zona Oeste Arenoso: grupos, autoridades y contacto. Tres páginas, sin blog ni base de datos.
 
 Publicado en <https://creaoestearenoso.github.io>.
 
@@ -14,22 +14,6 @@ organización a quien corresponda; no hace falta mover los repositorios.
 
 Astro genera el sitio y GitHub Actions lo publica en GitHub Pages con cada push a `main`.
 No hay servidor ni base de datos.
-
-## Cómo se carga una novedad
-
-Crear un archivo markdown en `src/content/novedades/`, por ejemplo `jornada-ganadera.md`:
-
-```markdown
----
-titulo: "Jornada ganadera en Trenque Lauquen"
-fecha: 2026-10-02
-resumen: "Una línea contando de qué se trata."
----
-
-El texto de la nota, en markdown.
-```
-
-El nombre del archivo es la dirección de la nota (`/novedades/jornada-ganadera`).
 
 ## Desarrollo local
 

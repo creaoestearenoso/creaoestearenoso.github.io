@@ -1,12 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getCollection } from 'astro:content';
-
-const novedades = (await getCollection('novedades'))
-  .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())
-  .slice(0, 3);
-
-const formato = new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 ---
 
 <Base titulo="Inicio">
@@ -18,31 +11,12 @@ const formato = new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'long'
 
   <ul class="tarjetas">
     <li class="tarjeta">
-      <h3>Los grupos</h3>
+      <h3><a href="/la-zona">Los grupos</a></h3>
       <p>Quiénes integran la zona, dónde están y con qué actividad trabajan.</p>
     </li>
     <li class="tarjeta">
-      <h3>Formación</h3>
-      <p>Escuelas de encargados y jornadas a campo abiertas a las empresas de la zona.</p>
-    </li>
-    <li class="tarjeta">
-      <h3>Coordinación</h3>
-      <p>Vocalía, coordinación zonal y los canales para acercar una propuesta.</p>
+      <h3><a href="/contacto">Contacto</a></h3>
+      <p>Por dónde llega una consulta o una propuesta de trabajo con la zona.</p>
     </li>
   </ul>
-
-  {novedades.length > 0 && (
-    <>
-      <h2>Últimas novedades</h2>
-      <ul class="listado">
-        {novedades.map((n) => (
-          <li>
-            <p class="fecha">{formato.format(n.data.fecha)}</p>
-            <h2><a href={`/novedades/${n.id}`}>{n.data.titulo}</a></h2>
-            <p>{n.data.resumen}</p>
-          </li>
-        ))}
-      </ul>
-    </>
-  )}
 </Base>
