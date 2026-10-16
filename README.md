@@ -2,7 +2,7 @@
 
 Sitio institucional de la zona Oeste Arenoso: grupos, autoridades y contacto. Tres páginas, sin blog ni base de datos.
 
-Publicado en <https://creaoestearenoso.github.io>.
+Publicado en <https://creaoestearenoso.org.ar> (dominio de AACREA, DNS en la cuenta de Cloudflare de la zona).
 
 ## De quién es
 
